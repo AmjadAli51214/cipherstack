@@ -1,0 +1,1 @@
+CipherStack is a frontend-based application that allows users to visually build a cascade encryption pipeline using multiple cipher algorithms. The platform follows the concept of cipher stacking, where plaintext passes through a sequence of encryption nodes, producing a final secure ciphertext.
