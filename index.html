@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CipherStack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div>
+        <div class="brand">CipherStack</div>
+        <p class="subtitle">Build, reorder, and run a cascade of ciphers in a vertical pipeline.</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="encryptModeBtn" class="mode-btn active" type="button">Encrypt</button>
+        <button id="decryptModeBtn" class="mode-btn" type="button">Decrypt</button>
+        <button id="runBtn" class="primary-btn" type="button">Run Pipeline</button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <section class="panel library-panel">
+          <div class="panel-header">
+            <h2>Cipher Library</h2>
+            <p>Add nodes to the pipeline.</p>
+          </div>
+          <div id="libraryList" class="library-list"></div>
+        </section>
+
+        <section class="panel utility-panel">
+          <div class="panel-header">
+            <h2>Pipeline JSON</h2>
+            <p>Export, paste, and import a full pipeline.</p>
+          </div>
+          <textarea id="jsonBox" class="json-box" spellcheck="false" placeholder="Exported JSON appears here. Paste JSON here to import."></textarea>
+          <div class="utility-actions">
+            <button id="exportJsonBtn" type="button">Export JSON</button>
+            <button id="importJsonBtn" type="button">Import JSON</button>
+            <button id="clearJsonBtn" type="button">Clear</button>
+          </div>
+        </section>
+      </aside>
+
+      <main class="main-stage">
+        <section class="panel input-panel">
+          <div class="panel-header row-between">
+            <div>
+              <h2 id="inputLabel">Plaintext Input</h2>
+              <p id="inputHelp">Enter text here, then run the pipeline.</p>
+            </div>
+            <span id="modeBadge" class="badge">Encrypt mode</span>
+          </div>
+          <textarea id="sourceText" class="source-text" spellcheck="false" placeholder="Type text here..."></textarea>
+          <div id="validationError" class="validation-error" aria-live="polite"></div>
+        </section>
+
+        <section class="panel pipeline-panel">
+          <div class="panel-header row-between">
+            <div>
+              <h2>Pipeline</h2>
+              <p>Minimum 3 nodes required before the pipeline runs.</p>
+            </div>
+            <span id="nodeCountBadge" class="badge badge-soft">0 nodes</span>
+          </div>
+          <div id="pipelineList" class="pipeline-list"></div>
+        </section>
+
+        <section class="panel output-panel">
+          <div class="panel-header row-between">
+            <div>
+              <h2>Final Output</h2>
+              <p>The complete result after the last node.</p>
+            </div>
+            <button id="copyOutputBtn" class="secondary-btn" type="button">Copy</button>
+          </div>
+          <pre id="finalOutput" class="final-output"></pre>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
